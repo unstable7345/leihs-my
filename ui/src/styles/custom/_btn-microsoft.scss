@@ -1,0 +1,17 @@
+// Sign-in button for the Microsoft authentication system, white like Microsoft's own
+.btn-microsoft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3c4043;
+  background-color: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 0.75rem;
+
+  &:hover,
+  &:focus {
+    color: #3c4043;
+    background-color: #f5f6f7;
+    border-color: #c4c7cc;
+  }
+}

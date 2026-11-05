@@ -154,6 +154,38 @@ export const Step2_PasswordAndExternalAuth = () => {
   return <SignInPage {...exampleProps} />
 }
 
+export const Step2_MicrosoftAndPassword = () => {
+  const exampleProps = {
+    navbar: navbarProps,
+    csrfToken: { value: 'xxx' },
+    authFlow: {
+      user: 'nico.franza@enti.cat',
+      title: 'Log into leihs',
+      form: {
+        method: 'POST',
+        action: '/sign-in'
+      }
+    },
+    authSystems: [
+      {
+        id: 'microsoft',
+        type: 'external',
+        name: 'Login ENTI-UB',
+        description: null,
+        external_url: '/ms-auth/sign-in'
+      },
+      {
+        id: 'password',
+        type: 'password',
+        name: 'leihs password',
+        description: null,
+        external_url: null
+      }
+    ]
+  }
+  return <SignInPage {...exampleProps} />
+}
+
 export const Step2_2ExternalAuthOptionsAndNoPassword = () => {
   const exampleProps = {
     navbar: navbarProps,

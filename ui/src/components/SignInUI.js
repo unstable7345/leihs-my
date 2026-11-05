@@ -6,6 +6,15 @@ import FlashMessages from './FlashMessages'
 import CsrfTokenField from '../components/CsrfTokenField'
 import { Translator as T } from '../locale/translate'
 
+const MicrosoftLogo = () => (
+  <svg className="mr-2 flex-shrink-0" width="21" height="21" viewBox="0 0 21 21" aria-hidden="true">
+    <rect x="1" y="1" width="9" height="9" fill="#f25022" />
+    <rect x="1" y="11" width="9" height="9" fill="#00a4ef" />
+    <rect x="11" y="1" width="9" height="9" fill="#7fba00" />
+    <rect x="11" y="11" width="9" height="9" fill="#ffb900" />
+  </svg>
+)
+
 export const SignInCard = ({ authFlow, authSystems, messages, locales, csrfToken, autoFocusUserField = true }) => {
   const t = T(locales)
   const userParam = f.get(authFlow, 'user')
@@ -65,10 +74,17 @@ export const SignInCard = ({ authFlow, authSystems, messages, locales, csrfToken
               <CsrfTokenField {...csrfToken} />
               <input type="hidden" name="user-unique-id" value={userParam || ''} />
               {returnTo && <input type="hidden" name="return-to" value={returnTo} />}
-              <button className="btn btn-lg btn-success btn-block" href={o.external_url} type="submit">
-                {/* {'ZHdK-Login'} */}
-                {name}
-              </button>
+              {id === 'microsoft' ? (
+                <button className="btn btn-lg btn-block btn-microsoft" type="submit">
+                  <MicrosoftLogo />
+                  {name}
+                </button>
+              ) : (
+                <button className="btn btn-lg btn-success btn-block" href={o.external_url} type="submit">
+                  {/* {'ZHdK-Login'} */}
+                  {name}
+                </button>
+              )}
               <small>{description}</small>
             </form>
           ))}
